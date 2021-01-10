@@ -199,4 +199,196 @@ if(TRUE){
 
 print(message)
 ```
+## Operadores de comparación
+Al escribir declaraciones condicionales, a veces necesitamos usar diferentes tipos de operadores para comparar valores. Estos operadores se denominan operadores de comparación.
+
+Aquí hay una lista de algunos operadores de comparación útiles y su sintaxis:
+
+- Menos de: <
+- Mayor que:>
+- Menor o igual a: <=
+- Mayor o igual a:> =
+- Es igual a: ==
+- NO es igual a:! =
+
+Los operadores de comparación comparan el valor de la izquierda con el valor de la derecha. Por ejemplo:
+```{r}
+10 < 12 # Evaluates to TRUE
+```
+Puede resultar útil pensar en las declaraciones de comparación como preguntas. Cuando la respuesta es "sí", la declaración se evalúa como verdadera, y cuando la respuesta es "no", la declaración se evalúa como falsa. El código anterior estaría preguntando: ¿es 10 menos que 12? ¡Si! Entonces 10 <12 se evalúa como verdadero.
+
+## Ejercicio
+Utilice un operador de comparación para verificar si 56 es mayor o igual que 129. ¿A qué se debe evaluar esta expresión? ¡Compruébalo ejecutando tu código!
+
+En una nueva línea, use el operador de comparación correcto para verificar si 56 NO es igual a 129. ¿A qué se debe evaluar esta expresión? ¡Compruébalo ejecutando tu código!
+
+```{r}
+title: "Introduction to R Syntax"
+output: html_notebook
+
+56 >= 129
+56 != 129
+```
+## Operadores Lógicos
+Trabajar con condicionales significa que usaremos valores lógicos, verdaderos o falsos. En R, hay operadores que trabajan con valores lógicos conocidos como operadores lógicos. Podemos usar operadores lógicos para agregar una lógica más sofisticada a nuestros condicionales. Hay tres operadores lógicos:
+
+- El operador AND (&)
+- El operador OR (|)
+- El operador NOT, también conocido como operador bang (!)
+
+Cuando usamos el operador &, estamos comprobando que dos cosas son ciertas:
+
+```{r}
+if (stopLight == 'green' & pedestrians == 0) {
+  print('Go!');
+} else {
+  print('Stop');
+}
+```
+Cuando se usa el operador &, ambas condiciones deben evaluarse como verdaderas para que toda la condición se evalúe como verdadera y se ejecute. De lo contrario, si alguna de las condiciones es falsa, la condición & se evaluará como falsa y se ejecutará el bloque else.
+
+Si solo nos importa que una de las dos condiciones sea verdadera, podemos usar el | operador:
+
+```{r}
+if (day == 'Saturday' | day == 'Sunday') {
+  print('Enjoy the weekend!')
+} else {
+  print('Do some work.')
+}
+```
+Al utilizar el | operador, solo una de las condiciones debe evaluarse como verdadera para que la declaración general se evalúe como verdadera. En el ejemplo del código anterior, si el día == 'sábado' o el día == 'domingo' se evalúa como verdadero, la condición de if se evaluará como verdadera y su bloque de código se ejecutará. Si la primera condición en un | declaración se evalúa como verdadera, la segunda condición ni siquiera se comprobará.
+
+Los ! El operador NOT invierte o niega el valor de un valor VERDADERO:
+```{r}
+excited <- TRUE
+print(!excited) # Prints FALSE
+```
+Esencialmente, el! El operador tomará un valor verdadero y devolverá falso, o tomará un valor falso y devolverá verdadero.
+
+Los operadores lógicos se usan a menudo en declaraciones condicionales para agregar otra capa de lógica a nuestro código.
+
+## Ejercicio
+
+Hay dos variables en su código, el clima y high_chance_of_rain. Escribe una declaración condicional que:
+- Comprueba si el clima es igual de nublado y si hay una alta probabilidad de lluvia.
+- Si es ambos, el bloque de código debe asignar el valor del mensaje variable como "¡Paquete paraguas!"
+- De lo contrario, el bloque de código debería asignar el valor del mensaje variable a "¡No se necesita paraguas!"
+- Imprime la variable de mensaje después de la declaración condicional. Según la condición, ¿cuál debería ser su valor?
+
+
+## Código
+
+```{r}
+title: "Introduction to R Syntax"
+output: html_notebook
+
+message <- 'Should I pack an umbrella?'
+weather <- 'cloudy'
+high_chance_of_rain <- TRUE
+
+if( weather == "cloudy" & high_chance_of_rain ){
+message <- "Pack umbrella!"
+}else{
+  message <- "No need for umbrella!"
+}
+
+print(message)
+```
+## Llamar a una función
+Las funciones son acciones que podemos realizar. R proporciona una serie de funciones y, de hecho, ha estado utilizando algunas de ellas aunque tal vez no se haya dado cuenta.
+
+Llamamos, o usamos, estas funciones indicando el nombre de la función y siguiéndola con un paréntesis de apertura y cierre: es decir. nombre de la función(). Además, entre paréntesis, generalmente pasamos un argumento o un valor que la función usa para realizar una acción, es decir, functionName (valor).
+
+¿Esa sintaxis parece un poco familiar? Cuando hemos usado print () llamamos a la función de impresión. Cuando creamos un vector, ¡usamos la función combinar c ()! ¡Veamos print () y algunas funciones reales en acción!
+
+```{r}
+sort(c(2,4,10,5,1)); # Outputs c(1,2,4,5,10)
+length(c(2,4,10,5,1)); # Outputs 5
+sum(5,15,10) #Outputs 30
+```
+Veamos cada una de las líneas anteriores:
+
+- En la primera línea, se llama a la función sort () con un parámetro del vector c (2,4,10,5,1). El resultado es un vector ordenado c (1, 2, 4, 5, 10) con los valores en orden ascendente.
+- En la segunda línea, llamamos a una función que habíamos visto antes: length () y devolvió el valor 5 porque había cinco elementos en el vector.
+- En la tercera línea, llamamos a una función sum () que suma todos los argumentos que le pasamos.
+
+Comprender cómo llamar a una función y qué argumentos necesita es una parte fundamental del aprovechamiento de R como herramienta para realizar análisis. ¡Practiquemos llamar a algunas funciones útiles!
+
+## Ejercicio
+La función unique () toma un argumento de vector y devuelve un vector con solo los elementos únicos en ese vector (eliminando todos los duplicados).
+
+- Llame a esta función y pase los datos del argumento.
+- Guarde ese resultado dentro de una variable llamada unique_vals
+- Imprima la variable unique_vals para que pueda ver lo que hay dentro del vector con sólo valores únicos.
+
+Obtén la raíz cuadrada sqrt () del número 49 llamando a la función con el argumento especificado. Guarde el resultado dentro de una variable llamada solución.
+
+Imprima la variable de solución para que pueda ver que confirm sqrt () calculó la raíz cuadrada correctamente.
+
+La función floor () redondea un decimal hacia abajo al siguiente número entero, y la función techo () redondea hacia arriba al siguiente número entero. Llame a ambas funciones en el número 3.14 y guarde cada resultado dentro de dos nuevas variables que cree: round_down y round_up respectivamente.
+
+Imprima ambas variables para que pueda ver su contenido.
+
+## Código
+```{r}
+title: "Introduction to R Syntax"
+output: html_notebook
+
+data <- c(120,22,22,31,15,120)
+
+ 
+unique_vals = unique(data)
+print(unique_vals)
+
+solution <- sqrt(49)
+print(solution)
+
+round_down <- floor(3.14)
+round_up <- ceiling(3.14)
+
+print(round_down)
+print(round_up)
+```
+## Importación de paquetes
+La popularidad de R también se debe en gran parte a los fantásticos paquetes disponibles en el idioma. Un paquete es un conjunto de código que facilita la codificación de determinadas tareas. Hay todo tipo de paquetes para todo tipo de propósitos, que van desde visualizar y limpiar datos hasta pedir pizza o publicar un tweet. De hecho, la mayoría de los programadores R (programadores R) usan paquetes cuando codifican. Es por eso que es posible que los escuche diferenciar los paquetes de "Base R". Base R se refiere al lenguaje R por sí mismo y todo lo que puede hacer sin importar ningún paquete.
+
+Base R es muy potente, pero la mayoría de las veces, querrá importar un paquete para hacer su vida más fácil. Solo necesita ejecutar este comando la primera vez que instala un paquete, después de eso no es necesario ejecutarlo:
+
+```{r}
+install.packages('package-name')
+```
+Para importar un paquete, simplemente:
+```{r}
+library(package-name)
+```
+Puede buscar documentación para los diferentes paquetes disponibles en R en CRAN (Red de archivo integral de R).
+
+En esta lección, codificamos en Base R, pero practiquemos la importación de uno de los paquetes R más populares: dplyr. Dplyr es un paquete que se utiliza para limpiar, procesar y organizar datos que utilizará a medida que aprenda sobre R.
+
+## Ejercicio
+Actualmente, el código dentro de notebook.Rmd arroja un error porque usa los paquetes dplyr y readr sin importarlos. Importe los paquetes dplyr y readr usando la función library () y luego presione ejecutar para que pueda observar que los paquetes hacen su magia.
+```{r}
+title: "Introduction to R Syntax"
+output: html_notebook
+
+# load libraries
+#install.packages('dplyr')
+#install.packages('readr')
+
+library(dplyr)
+library(readr)
+
+# load data frame
+artists <- read_csv('artists.csv')
+
+# inspect data frame
+artists
+head(artists)
+summary(artists)
+
+artists %>%
+  select(-country,-year_founded,-albums) %>%
+  filter(spotify_monthly_listeners > 20000000, genre != 'Hip Hop') %>%
+  arrange(desc(youtube_subscribers))
+```
 
