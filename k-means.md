@@ -5,7 +5,7 @@ K-medias es un método que tiene como objetivo generar una partición de un conj
 ## A continuacion se presentara la implementacion de dicho metodo en el lenguaje R con el dataframe Iris. 
 
 La funcion ipak no pertenece necesariamente a la implementacion de k-means, sin embargo es una herramienta de suma importancia, la cual nos brinda la capacidad de cargar mas de un paquete al mismo tiempo.
-```sh
+```{r}
 ipak <- function(pkg){
   new.pkg <- pkg[!(pkg %in% installed.packages()[, "Package"])]
   if (length(new.pkg)) 
@@ -14,13 +14,13 @@ ipak <- function(pkg){
 }
 ```
 En las siguientes lineas de codigo declaramos una variable packages la cual tendra asignado un vector con el nombre de los paquetes que utilizaremos, despues mandamos a llamar la funcion ipak y le sobrecargamos la variable declarada anteriormente. Una vez ejecutadas estas lineas de codigo ya estara listo nuestro enterno de trabajo para comenzar con la implementacion.
-```sh
+```{r}
 packages <- c("stats","dplyr", "ggplot2","ggfortify","tidyr","tidyverse","cluster","factoextra","NbClust","tidyr")
 ipak(packages)
 ```
 R nos brinda una infinidad de bases de datos que nos sirven para comenzar a interactuar con el lenguaje. En este caso especifico utilizaremos el dataframe Iris para realizar la implementacion. A continuacion mostramos el dataframe con la palabra reservada view. El dataframe cuenta con una columna con datos que no son numericos por lo que con la palabra reservada select solo tomamos las columnas que son de nuestro interes.
 
-```sh
+```{r}
 view(iris)
 
 df = select(iris,c(1,2,3,4))
@@ -42,7 +42,7 @@ El resultado se mostrara en la consola de R y por medio de una grafica.
 ![](2.PNG )
 
 Una vez que sabemos que lo mas optimo es implementar dos cluster procedemos a calcularlos con las siguientes lineas de codigo.
-```sh
+```{r}
 k2 <- kmeans(df, centers = 2, nstart = 25)
 k2
 str(k2)
@@ -50,7 +50,7 @@ str(k2)
 Ahora que ya calculamos los clusters vamos a mostrarlos por medio de graficas. En nuestro caso decidimos mostrarlo por medio de 3 graficas diferentes las cuales se presentaran a continuacion.
 
 Codigo:
-```sh
+```{r}
 #plotear los cluster
 fviz_cluster(k2, data = df)
 ```
@@ -59,7 +59,7 @@ Grafica:
 ![](g1.PNG )
 
 Codigo:
-```sh
+```{r}
 fviz_cluster(k2, data = df, ellipse.type = "euclid",repel = TRUE,star.plot = TRUE) #ellipse.type= "t", "norm", "euclid"
 ```
 Grafica:
@@ -68,7 +68,7 @@ Grafica:
 
 
 Codigo:
-```sh
+```{r}
 fviz_cluster(k2, data = df, ellipse.type = "norm")
 ```
 Grafica:
