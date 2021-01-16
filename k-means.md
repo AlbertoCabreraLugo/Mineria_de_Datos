@@ -31,21 +31,43 @@ La funcion que se muestra a continuacion se utiliza para determinar la cantidad 
 resnumclust<-NbClust(df, distance = "euclidean", min.nc=2, max.nc=10, method = "kmeans", index = "alllong")
 fviz_nbclust(resnumclust)
 ```
-El resultado se mostrara en la consola de R y por medio de una grafica. Anexamos los resultados de la ejecucion de estas instrucciones. 
+El resultado se mostrara en la consola de R y por medio de una grafica.
+
+### En la siguiente imagen se muestra el resultado del metodo "resnumclus" en donde en base a su analisis nos recomienda utilizar los datos con solo 2 clusters
 
 ![](1.PNG )
 
+### El metodo "resnumclus" tambien nos arroja la siguiente grafica de barras, en donde la barra con mayor valor es la que nos indica el numero de clusters recomendados.
+
 ![](2.PNG )
 
+Una vez que sabemos que lo mas optimo es implementar dos cluster procedemos a calcularlos con las siguientes lineas de codigo.
 ```sh
 k2 <- kmeans(df, centers = 2, nstart = 25)
 k2
 str(k2)
 ```
+Ahora que ya calculamos los clusters vamos a mostrarlos por medio de graficas. En nuestro caso decidimos mostrarlo por medio de 3 graficas diferentes las cuales se presentaran a continuacion.
+
+Codigo:
 ```sh
 #plotear los cluster
 fviz_cluster(k2, data = df)
-fviz_cluster(k2, data = df, ellipse.type = "euclid",repel = TRUE,star.plot = TRUE) #ellipse.type= "t", "norm", "euclid"
-fviz_cluster(k2, data = df, ellipse.type = "norm")
-fviz_cluster(k2, data = df, ellipse.type = "norm",palette = "Set2", ggtheme = theme_minimal())
 ```
+Grafica:
+![](g1.PNG )
+
+Codigo:
+```sh
+fviz_cluster(k2, data = df, ellipse.type = "euclid",repel = TRUE,star.plot = TRUE) #ellipse.type= "t", "norm", "euclid"
+```
+Grafica:
+![](g2.PNG )
+
+
+Codigo:
+```sh
+fviz_cluster(k2, data = df, ellipse.type = "norm")
+```
+Grafica:
+![](g3.PNG )
