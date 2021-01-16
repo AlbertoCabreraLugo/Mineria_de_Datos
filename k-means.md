@@ -33,11 +33,11 @@ fviz_nbclust(resnumclust)
 ```
 El resultado se mostrara en la consola de R y por medio de una grafica.
 
-### En la siguiente imagen se muestra el resultado del metodo "resnumclus" en donde en base a su analisis nos recomienda utilizar los datos con solo 2 clusters
+#### En la siguiente imagen se muestra el resultado del metodo "resnumclus" en donde en base a su analisis nos recomienda utilizar los datos con solo 2 clusters
 
 ![](1.PNG )
 
-### El metodo "resnumclus" tambien nos arroja la siguiente grafica de barras, en donde la barra con mayor valor es la que nos indica el numero de clusters recomendados.
+#### El metodo "resnumclus" tambien nos arroja la siguiente grafica de barras, en donde la barra con mayor valor es la que nos indica el numero de clusters recomendados.
 
 ![](2.PNG )
 
@@ -55,6 +55,7 @@ Codigo:
 fviz_cluster(k2, data = df)
 ```
 Grafica:
+
 ![](g1.PNG )
 
 Codigo:
@@ -62,6 +63,7 @@ Codigo:
 fviz_cluster(k2, data = df, ellipse.type = "euclid",repel = TRUE,star.plot = TRUE) #ellipse.type= "t", "norm", "euclid"
 ```
 Grafica:
+
 ![](g2.PNG )
 
 
@@ -70,4 +72,5 @@ Codigo:
 fviz_cluster(k2, data = df, ellipse.type = "norm")
 ```
 Grafica:
+
 ![](g3.PNG )
